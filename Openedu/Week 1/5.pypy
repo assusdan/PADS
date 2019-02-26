@@ -1,0 +1,23 @@
+f = open("input.txt", "r")
+o = open("output.txt", "w")
+f.readline()
+
+arr = list(map(int, f.readline().split(" ")))
+buf, count = "", 0
+
+for i in range(len(arr)-1):
+        min, minindex = arr[i], -1 
+        for j in range(i+1, len(arr)):
+                if arr[j] < min: 
+                        min, minindex = arr[j], j
+        if minindex > -1:
+                arr[i], arr[minindex] = arr[minindex], arr[i]
+                buf += "Swap elements at indices " + str(i+1) + " and " + str(minindex+1) + ".\n"
+                if count > 100:
+                        o.write(buf)
+                        count, buf = 0, ""
+
+if len(buf) > 0: o.write(buf)
+o.write("No more swaps needed.\n")
+
+o.write(str.join(" ",  list(map(str, arr))))
