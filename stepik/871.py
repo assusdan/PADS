@@ -1,15 +1,15 @@
-def stairway_up(stairs):
-    previous = 0
-    current = stairs[0]
+def count_max(stairs):
+    prev = 0
+    curr = stairs[0]
 
     for stair in stairs[1:]:
-        previous, current = current, max(previous, current) + stair
+        prev, curr = curr, max(prev, curr) + stair
 
-    return current
+    return curr
 
 
 def main():
-    n_ = input()
+    input()
     stairs = [int(i) for i in input().split()]
 
     print(stairway_up(stairs))
